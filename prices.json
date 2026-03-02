@@ -1,0 +1,709 @@
+{
+  "lastUpdated": "2026-03-02",
+  "cards": {
+    "albedo-silver-sig-sp": {
+      "name": "Endless Devotion, Albedo — Silver Sig SP",
+      "game": "WS",
+      "currentPrice": 4500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 3800},
+        {"date": "2026-02-02", "price": 3950},
+        {"date": "2026-02-09", "price": 4100},
+        {"date": "2026-02-16", "price": 4200},
+        {"date": "2026-02-23", "price": 4350},
+        {"date": "2026-03-02", "price": 4500}
+      ],
+      "change7d": 3.45,
+      "change30d": 18.42
+    },
+    "kirito-asuna-sao-10th-sp": {
+      "name": "Kirito & Asuna — SAO 10th SP",
+      "game": "WS",
+      "currentPrice": 2500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 2200},
+        {"date": "2026-02-02", "price": 2280},
+        {"date": "2026-02-09", "price": 2350},
+        {"date": "2026-02-16", "price": 2400},
+        {"date": "2026-02-23", "price": 2450},
+        {"date": "2026-03-02", "price": 2500}
+      ],
+      "change7d": 2.04,
+      "change30d": 13.64
+    },
+    "dark-magician-girl-mfc000": {
+      "name": "Dark Magician Girl — MFC-000 1st Ed Secret Rare",
+      "game": "YGO",
+      "currentPrice": 2000,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 1800},
+        {"date": "2026-02-02", "price": 1850},
+        {"date": "2026-02-09", "price": 1900},
+        {"date": "2026-02-16", "price": 1920},
+        {"date": "2026-02-23", "price": 1960},
+        {"date": "2026-03-02", "price": 2000}
+      ],
+      "change7d": 2.04,
+      "change30d": 11.11
+    },
+    "makima-chainsaw-man-auto-sp": {
+      "name": "Makima — \"First Taste\" Auto SP",
+      "game": "WS",
+      "currentPrice": 1500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 1200},
+        {"date": "2026-02-02", "price": 1280},
+        {"date": "2026-02-09", "price": 1350},
+        {"date": "2026-02-16", "price": 1380},
+        {"date": "2026-02-23", "price": 1430},
+        {"date": "2026-03-02", "price": 1500}
+      ],
+      "change7d": 4.90,
+      "change30d": 25.00
+    },
+    "mai-sakurajima-sp": {
+      "name": "Ephemeral Existence, Mai Sakurajima SP",
+      "game": "WS",
+      "currentPrice": 1050,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 900},
+        {"date": "2026-02-02", "price": 940},
+        {"date": "2026-02-09", "price": 970},
+        {"date": "2026-02-16", "price": 990},
+        {"date": "2026-02-23", "price": 1020},
+        {"date": "2026-03-02", "price": 1050}
+      ],
+      "change7d": 2.94,
+      "change30d": 16.67
+    },
+    "sky-striker-ace-raye-starlight": {
+      "name": "Sky Striker Ace — Raye Starlight Rare",
+      "game": "YGO",
+      "currentPrice": 800,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 780},
+        {"date": "2026-02-02", "price": 790},
+        {"date": "2026-02-09", "price": 810},
+        {"date": "2026-02-16", "price": 800},
+        {"date": "2026-02-23", "price": 790},
+        {"date": "2026-03-02", "price": 800}
+      ],
+      "change7d": 1.27,
+      "change30d": 2.56
+    },
+    "ash-blossom-ghost-rare": {
+      "name": "Ash Blossom & Joyous Spring — Ghost Rare",
+      "game": "YGO",
+      "currentPrice": 500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 520},
+        {"date": "2026-02-02", "price": 510},
+        {"date": "2026-02-09", "price": 495},
+        {"date": "2026-02-16", "price": 490},
+        {"date": "2026-02-23", "price": 498},
+        {"date": "2026-03-02", "price": 500}
+      ],
+      "change7d": 0.40,
+      "change30d": -3.85
+    },
+    "dark-magician-girl-starlight": {
+      "name": "Dark Magician Girl — Starlight Rare",
+      "game": "YGO",
+      "currentPrice": 500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 460},
+        {"date": "2026-02-02", "price": 470},
+        {"date": "2026-02-09", "price": 478},
+        {"date": "2026-02-16", "price": 485},
+        {"date": "2026-02-23", "price": 492},
+        {"date": "2026-03-02", "price": 500}
+      ],
+      "change7d": 1.63,
+      "change30d": 8.70
+    },
+    "kaisa-riftbound-signature": {
+      "name": "Kai'Sa, Daughter of the Void — Signature",
+      "game": "RB",
+      "currentPrice": 1300,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 950},
+        {"date": "2026-02-02", "price": 1050},
+        {"date": "2026-02-09", "price": 1120},
+        {"date": "2026-02-16", "price": 1180},
+        {"date": "2026-02-23", "price": 1250},
+        {"date": "2026-03-02", "price": 1300}
+      ],
+      "change7d": 4.00,
+      "change30d": 36.84
+    },
+    "ahri-riftbound-signature": {
+      "name": "Ahri, Nine-Tailed Fox — Signature Foil",
+      "game": "RB",
+      "currentPrice": 1200,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 850},
+        {"date": "2026-02-02", "price": 950},
+        {"date": "2026-02-09", "price": 1020},
+        {"date": "2026-02-16", "price": 1080},
+        {"date": "2026-02-23", "price": 1150},
+        {"date": "2026-03-02", "price": 1200}
+      ],
+      "change7d": 4.35,
+      "change30d": 41.18
+    },
+    "jinx-riftbound-signature": {
+      "name": "Jinx, Loose Cannon — Signature",
+      "game": "RB",
+      "currentPrice": 1200,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 900},
+        {"date": "2026-02-02", "price": 980},
+        {"date": "2026-02-09", "price": 1050},
+        {"date": "2026-02-16", "price": 1100},
+        {"date": "2026-02-23", "price": 1150},
+        {"date": "2026-03-02", "price": 1200}
+      ],
+      "change7d": 4.35,
+      "change30d": 33.33
+    },
+    "ahri-alluring-launch-exclusive": {
+      "name": "Ahri, Alluring — Launch Exclusive",
+      "game": "RB",
+      "currentPrice": 153,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 110},
+        {"date": "2026-02-02", "price": 120},
+        {"date": "2026-02-09", "price": 128},
+        {"date": "2026-02-16", "price": 138},
+        {"date": "2026-02-23", "price": 146},
+        {"date": "2026-03-02", "price": 153}
+      ],
+      "change7d": 4.79,
+      "change30d": 39.09
+    },
+    "frieren-fern-ssp": {
+      "name": "Frieren & Fern — SSP",
+      "game": "WS",
+      "currentPrice": 280,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 200},
+        {"date": "2026-02-02", "price": 220},
+        {"date": "2026-02-09", "price": 235},
+        {"date": "2026-02-16", "price": 250},
+        {"date": "2026-02-23", "price": 265},
+        {"date": "2026-03-02", "price": 280}
+      ],
+      "change7d": 5.66,
+      "change30d": 40.00
+    },
+    "momo-ayase-dandadan-sp": {
+      "name": "Momo Ayase — Dandadan SP",
+      "game": "WS",
+      "currentPrice": 185,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 80},
+        {"date": "2026-02-02", "price": 100},
+        {"date": "2026-02-09", "price": 125},
+        {"date": "2026-02-16", "price": 148},
+        {"date": "2026-02-23", "price": 165},
+        {"date": "2026-03-02", "price": 185}
+      ],
+      "change7d": 12.12,
+      "change30d": 131.25
+    },
+    "bocchi-sp-signed": {
+      "name": "Hitori Gotō \"Bocchi\" — SP Signed",
+      "game": "WS",
+      "currentPrice": 320,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 200},
+        {"date": "2026-02-02", "price": 230},
+        {"date": "2026-02-09", "price": 255},
+        {"date": "2026-02-16", "price": 280},
+        {"date": "2026-02-23", "price": 300},
+        {"date": "2026-03-02", "price": 320}
+      ],
+      "change7d": 6.67,
+      "change30d": 60.00
+    },
+    "roxy-scornful-eyes-sp": {
+      "name": "Roxy — Scornful Eyes SP",
+      "game": "WS",
+      "currentPrice": 165,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 150},
+        {"date": "2026-02-02", "price": 152},
+        {"date": "2026-02-09", "price": 155},
+        {"date": "2026-02-16", "price": 158},
+        {"date": "2026-02-23", "price": 161},
+        {"date": "2026-03-02", "price": 165}
+      ],
+      "change7d": 2.48,
+      "change30d": 10.00
+    },
+    "megumin-sp-signed": {
+      "name": "Megumin — SP Signed",
+      "game": "WS",
+      "currentPrice": 280,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 240},
+        {"date": "2026-02-02", "price": 248},
+        {"date": "2026-02-09", "price": 256},
+        {"date": "2026-02-16", "price": 262},
+        {"date": "2026-02-23", "price": 270},
+        {"date": "2026-03-02", "price": 280}
+      ],
+      "change7d": 3.70,
+      "change30d": 16.67
+    },
+    "laundry-dragonmaid-starlight": {
+      "name": "Laundry Dragonmaid — Starlight Rare",
+      "game": "YGO",
+      "currentPrice": 520,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 480},
+        {"date": "2026-02-02", "price": 488},
+        {"date": "2026-02-09", "price": 495},
+        {"date": "2026-02-16", "price": 503},
+        {"date": "2026-02-23", "price": 511},
+        {"date": "2026-03-02", "price": 520}
+      ],
+      "change7d": 1.76,
+      "change30d": 8.33
+    },
+    "nami-serialized-op08": {
+      "name": "Nami — Serialized Prize /1200",
+      "game": "OP",
+      "currentPrice": 600,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 350},
+        {"date": "2026-02-02", "price": 400},
+        {"date": "2026-02-09", "price": 450},
+        {"date": "2026-02-16", "price": 500},
+        {"date": "2026-02-23", "price": 550},
+        {"date": "2026-03-02", "price": 600}
+      ],
+      "change7d": 9.09,
+      "change30d": 71.43
+    },
+    "ai-hoshino-signed-sp": {
+      "name": "Ai Hoshino — Signed SP",
+      "game": "WS",
+      "currentPrice": 250,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 120},
+        {"date": "2026-02-02", "price": 150},
+        {"date": "2026-02-09", "price": 175},
+        {"date": "2026-02-16", "price": 200},
+        {"date": "2026-02-23", "price": 225},
+        {"date": "2026-03-02", "price": 250}
+      ],
+      "change7d": 11.11,
+      "change30d": 108.33
+    },
+    "anis-sec-plus-nikke": {
+      "name": "Anis: Sparkling Summer — SEC+",
+      "game": "WS",
+      "currentPrice": 350,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 200},
+        {"date": "2026-02-02", "price": 240},
+        {"date": "2026-02-09", "price": 270},
+        {"date": "2026-02-16", "price": 295},
+        {"date": "2026-02-23", "price": 320},
+        {"date": "2026-03-02", "price": 350}
+      ],
+      "change7d": 9.38,
+      "change30d": 75.00
+    },
+    "new-jersey-azur-lane-sp": {
+      "name": "Battleship New Jersey — SP",
+      "game": "WS",
+      "currentPrice": 190,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 80},
+        {"date": "2026-02-02", "price": 100},
+        {"date": "2026-02-09", "price": 130},
+        {"date": "2026-02-16", "price": 155},
+        {"date": "2026-02-23", "price": 175},
+        {"date": "2026-03-02", "price": 190}
+      ],
+      "change7d": 8.57,
+      "change30d": 137.50
+    },
+    "nami-chinese-anniversary": {
+      "name": "Nami — Chinese 1st Anniversary Hidden",
+      "game": "OP",
+      "currentPrice": 380,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 300},
+        {"date": "2026-02-02", "price": 320},
+        {"date": "2026-02-09", "price": 335},
+        {"date": "2026-02-16", "price": 350},
+        {"date": "2026-02-23", "price": 365},
+        {"date": "2026-03-02", "price": 380}
+      ],
+      "change7d": 4.11,
+      "change30d": 26.67
+    },
+    "rias-gremory-sec": {
+      "name": "Rias Gremory — SEC",
+      "game": "WS",
+      "currentPrice": 275,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 250},
+        {"date": "2026-02-02", "price": 255},
+        {"date": "2026-02-09", "price": 260},
+        {"date": "2026-02-16", "price": 265},
+        {"date": "2026-02-23", "price": 270},
+        {"date": "2026-03-02", "price": 275}
+      ],
+      "change7d": 1.85,
+      "change30d": 10.00
+    },
+    "tohru-dragon-maid-ssp": {
+      "name": "Poolside Temptation, Tohru — SSP",
+      "game": "WS",
+      "currentPrice": 190,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 160},
+        {"date": "2026-02-02", "price": 165},
+        {"date": "2026-02-09", "price": 170},
+        {"date": "2026-02-16", "price": 176},
+        {"date": "2026-02-23", "price": 183},
+        {"date": "2026-03-02", "price": 190}
+      ],
+      "change7d": 3.83,
+      "change30d": 18.75
+    },
+    "houshou-marine-ssp": {
+      "name": "Houshou Marine — SSP",
+      "game": "WS",
+      "currentPrice": 420,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 280},
+        {"date": "2026-02-02", "price": 310},
+        {"date": "2026-02-09", "price": 340},
+        {"date": "2026-02-16", "price": 365},
+        {"date": "2026-02-23", "price": 392},
+        {"date": "2026-03-02", "price": 420}
+      ],
+      "change7d": 7.14,
+      "change30d": 50.00
+    },
+    "dark-magician-girl-classics": {
+      "name": "Dark Magician Girl",
+      "game": "YGO",
+      "currentPrice": 400,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 350},
+        {"date": "2026-02-02", "price": 360},
+        {"date": "2026-02-09", "price": 370},
+        {"date": "2026-02-16", "price": 380},
+        {"date": "2026-02-23", "price": 390},
+        {"date": "2026-03-02", "price": 400}
+      ],
+      "change7d": 2.56,
+      "change30d": 14.29
+    },
+    "ash-blossom-classics": {
+      "name": "Ash Blossom & Joyous Spring",
+      "game": "YGO",
+      "currentPrice": 265,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 290},
+        {"date": "2026-02-02", "price": 285},
+        {"date": "2026-02-09", "price": 278},
+        {"date": "2026-02-16", "price": 270},
+        {"date": "2026-02-23", "price": 267},
+        {"date": "2026-03-02", "price": 265}
+      ],
+      "change7d": -0.75,
+      "change30d": -8.62
+    },
+    "ghost-belle-classics": {
+      "name": "Ghost Belle & Haunted Mansion",
+      "game": "YGO",
+      "currentPrice": 100,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 95},
+        {"date": "2026-02-02", "price": 96},
+        {"date": "2026-02-09", "price": 97},
+        {"date": "2026-02-16", "price": 98},
+        {"date": "2026-02-23", "price": 99},
+        {"date": "2026-03-02", "price": 100}
+      ],
+      "change7d": 1.01,
+      "change30d": 5.26
+    },
+    "boa-hancock-manga-art": {
+      "name": "Boa Hancock — SR Manga Art",
+      "game": "OP",
+      "currentPrice": 280,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 220},
+        {"date": "2026-02-02", "price": 235},
+        {"date": "2026-02-09", "price": 248},
+        {"date": "2026-02-16", "price": 258},
+        {"date": "2026-02-23", "price": 270},
+        {"date": "2026-03-02", "price": 280}
+      ],
+      "change7d": 3.70,
+      "change30d": 27.27
+    },
+    "nami-manga-alt-art": {
+      "name": "Nami — Manga Alt Art",
+      "game": "OP",
+      "currentPrice": 250,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 200},
+        {"date": "2026-02-02", "price": 210},
+        {"date": "2026-02-09", "price": 220},
+        {"date": "2026-02-16", "price": 232},
+        {"date": "2026-02-23", "price": 242},
+        {"date": "2026-03-02", "price": 250}
+      ],
+      "change7d": 3.31,
+      "change30d": 25.00
+    },
+    "boa-hancock-25th": {
+      "name": "Boa Hancock — 25th Anniversary",
+      "game": "OP",
+      "currentPrice": 225,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 150},
+        {"date": "2026-02-02", "price": 170},
+        {"date": "2026-02-09", "price": 185},
+        {"date": "2026-02-16", "price": 200},
+        {"date": "2026-02-23", "price": 214},
+        {"date": "2026-03-02", "price": 225}
+      ],
+      "change7d": 5.14,
+      "change30d": 50.00
+    },
+    "mistys-tears": {
+      "name": "Misty's Tears",
+      "game": "PKM",
+      "currentPrice": 900,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 800},
+        {"date": "2026-02-02", "price": 820},
+        {"date": "2026-02-09", "price": 845},
+        {"date": "2026-02-16", "price": 865},
+        {"date": "2026-02-23", "price": 882},
+        {"date": "2026-03-02", "price": 900}
+      ],
+      "change7d": 2.04,
+      "change30d": 12.50
+    },
+    "erikas-invitation": {
+      "name": "Erika's Invitation",
+      "game": "PKM",
+      "currentPrice": 500,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 420},
+        {"date": "2026-02-02", "price": 435},
+        {"date": "2026-02-09", "price": 450},
+        {"date": "2026-02-16", "price": 465},
+        {"date": "2026-02-23", "price": 482},
+        {"date": "2026-03-02", "price": 500}
+      ],
+      "change7d": 3.73,
+      "change30d": 19.05
+    },
+    "sabrina": {
+      "name": "Sabrina",
+      "game": "PKM",
+      "currentPrice": 375,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 320},
+        {"date": "2026-02-02", "price": 330},
+        {"date": "2026-02-09", "price": 342},
+        {"date": "2026-02-16", "price": 354},
+        {"date": "2026-02-23", "price": 365},
+        {"date": "2026-03-02", "price": 375}
+      ],
+      "change7d": 2.74,
+      "change30d": 17.19
+    },
+    "marnie-full-art": {
+      "name": "Marnie — Full Art Secret Rare",
+      "game": "PKM",
+      "currentPrice": 400,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 340},
+        {"date": "2026-02-02", "price": 352},
+        {"date": "2026-02-09", "price": 365},
+        {"date": "2026-02-16", "price": 375},
+        {"date": "2026-02-23", "price": 388},
+        {"date": "2026-03-02", "price": 400}
+      ],
+      "change7d": 3.09,
+      "change30d": 17.65
+    },
+    "cynthia-full-art": {
+      "name": "Cynthia — Full Art",
+      "game": "PKM",
+      "currentPrice": 350,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 300},
+        {"date": "2026-02-02", "price": 310},
+        {"date": "2026-02-09", "price": 322},
+        {"date": "2026-02-16", "price": 333},
+        {"date": "2026-02-23", "price": 343},
+        {"date": "2026-03-02", "price": 350}
+      ],
+      "change7d": 2.04,
+      "change30d": 16.67
+    },
+    "lillie-full-art": {
+      "name": "Lillie — Full Art",
+      "game": "PKM",
+      "currentPrice": 400,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 340},
+        {"date": "2026-02-02", "price": 353},
+        {"date": "2026-02-09", "price": 365},
+        {"date": "2026-02-16", "price": 375},
+        {"date": "2026-02-23", "price": 388},
+        {"date": "2026-03-02", "price": 400}
+      ],
+      "change7d": 3.09,
+      "change30d": 17.65
+    },
+    "nessa-full-art": {
+      "name": "Nessa — Full Art Secret Rare",
+      "game": "PKM",
+      "currentPrice": 250,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 220},
+        {"date": "2026-02-02", "price": 228},
+        {"date": "2026-02-09", "price": 234},
+        {"date": "2026-02-16", "price": 240},
+        {"date": "2026-02-23", "price": 245},
+        {"date": "2026-03-02", "price": 250}
+      ],
+      "change7d": 2.04,
+      "change30d": 13.64
+    },
+    "irida-full-art": {
+      "name": "Irida — Full Art",
+      "game": "PKM",
+      "currentPrice": 150,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 120},
+        {"date": "2026-02-02", "price": 126},
+        {"date": "2026-02-09", "price": 132},
+        {"date": "2026-02-16", "price": 139},
+        {"date": "2026-02-23", "price": 145},
+        {"date": "2026-03-02", "price": 150}
+      ],
+      "change7d": 3.45,
+      "change30d": 25.00
+    },
+    "acerola-secret-rare": {
+      "name": "Acerola — Secret Rare Full Art",
+      "game": "PKM",
+      "currentPrice": 600,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 480},
+        {"date": "2026-02-02", "price": 505},
+        {"date": "2026-02-09", "price": 525},
+        {"date": "2026-02-16", "price": 545},
+        {"date": "2026-02-23", "price": 572},
+        {"date": "2026-03-02", "price": 600}
+      ],
+      "change7d": 4.90,
+      "change30d": 25.00
+    },
+    "albedo-silver-sig-sp-signed": {
+      "name": "Endless Devotion, Albedo — Silver Sig SP",
+      "game": "WS",
+      "currentPrice": 3800,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 3200},
+        {"date": "2026-02-02", "price": 3350},
+        {"date": "2026-02-09", "price": 3500},
+        {"date": "2026-02-16", "price": 3600},
+        {"date": "2026-02-23", "price": 3700},
+        {"date": "2026-03-02", "price": 3800}
+      ],
+      "change7d": 2.70,
+      "change30d": 18.75
+    },
+    "persona5-protagonist-sp": {
+      "name": "Protagonist & Arsene SP Foil",
+      "game": "WS",
+      "currentPrice": 250,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 210},
+        {"date": "2026-02-02", "price": 218},
+        {"date": "2026-02-09", "price": 226},
+        {"date": "2026-02-16", "price": 234},
+        {"date": "2026-02-23", "price": 242},
+        {"date": "2026-03-02", "price": 250}
+      ],
+      "change7d": 3.31,
+      "change30d": 19.05
+    },
+    "ahri-inquisitive-spiritforged": {
+      "name": "Ahri, Inquisitive — Signature Foil",
+      "game": "RB",
+      "currentPrice": 850,
+      "currency": "USD",
+      "history": [
+        {"date": "2026-01-26", "price": 500},
+        {"date": "2026-02-02", "price": 580},
+        {"date": "2026-02-09", "price": 650},
+        {"date": "2026-02-16", "price": 720},
+        {"date": "2026-02-23", "price": 790},
+        {"date": "2026-03-02", "price": 850}
+      ],
+      "change7d": 7.59,
+      "change30d": 70.00
+    }
+  }
+}
