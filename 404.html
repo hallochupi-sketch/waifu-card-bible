@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Lost in the Waifu Multiverse 🌸</title>
+  <meta name="description" content="Oops. This card path doesn't exist. Return to Waifu Pulls." />
+  <style>
+    :root {
+      --bg: #08080e;
+      --surface: #11121c;
+      --pink: #e8406a;
+      --violet: #9b59b6;
+      --gold: #f5c842;
+      --text: #f7f8ff;
+      --muted: #b4b8cc;
+      --line: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(232,64,106,0.18), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(155,89,182,0.2), transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      padding: 20px;
+    }
+    .card {
+      width: min(760px, 100%);
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.45);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(245,200,66,0.4);
+      color: var(--gold);
+      border-radius: 999px;
+      font-size: 12px;
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: clamp(34px, 7vw, 68px);
+      margin-bottom: 10px;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, #f4d9ff 45%, #ffd7e4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--muted); font-size: 17px; margin-bottom: 14px; }
+    .path {
+      margin: 0 auto 18px;
+      max-width: 100%;
+      overflow: auto;
+      white-space: nowrap;
+      font-size: 12px;
+      color: #d9dcf7;
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: rgba(0,0,0,0.25);
+    }
+    .quote {
+      min-height: 60px;
+      color: #f4c7d7;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 11px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      border-color: transparent;
+    }
+    .footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="badge">Waifu Pulls · Error Shrine</div>
+    <h1>404</h1>
+    <p class="subtitle">This card portal doesn’t exist in this timeline.</p>
+    <div class="path" id="path"></div>
+    <p class="quote" id="quote">Summoning rescue route...</p>
+
+    <div class="actions">
+      <a class="btn primary" href="/waifu-pulls/">🏠 Return to Museum</a>
+      <a class="btn" href="/waifu-pulls/#vault">💎 Open S-Tier Vault</a>
+      <button class="btn" id="reroll">🎲 Reroll quote</button>
+    </div>
+
+    <p class="footer">No cards were harmed. Your collection is safe.</p>
+  </main>
+
+  <script>
+    const quotes = [
+      "Echo says: wrong portal, right collector. Let's go home.",
+      "The card gods denied this URL. Try a cleaner pull.",
+      "You rolled a hidden route. Unfortunately, it's air.",
+      "This path has zero pull rate. Return to featured packs.",
+      "404: waifu not found... but taste still immaculate."
+    ];
+
+    function reroll() {
+      document.getElementById('quote').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    document.getElementById('path').textContent = location.pathname + location.search + location.hash;
+    document.getElementById('reroll').addEventListener('click', reroll);
+    reroll();
+  </script>
+</body>
+</html>
