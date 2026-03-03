@@ -180,6 +180,9 @@
     .beginner-copy { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
     .beginner-gloss { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
     .beginner-pill { font-size: 11px; color: var(--muted); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 4px 8px; background: rgba(255,255,255,0.03); }
+    .starter-tools { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 10px auto 0; width: min(860px, 96%); }
+    .starter-btn { border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); color: var(--text); border-radius: 10px; padding: 8px 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .starter-btn.active { border-color: rgba(91,156,246,0.6); box-shadow: 0 0 0 2px rgba(91,156,246,0.2) inset; }
     .onboard-overlay {
       position: fixed; inset: 0; z-index: 1200; display: none; align-items: center; justify-content: center;
       background: rgba(5,6,10,0.82); backdrop-filter: blur(8px); padding: 18px;
@@ -925,6 +928,14 @@
       <span class="beginner-pill">PSA 10 = top grading condition</span>
       <span class="beginner-pill">Tip: start under €100 first</span>
     </div>
+  </div>
+  <div class="starter-tools" id="starter-tools">
+    <button class="starter-btn" data-budget="0" onclick="setBudgetPreset(0, this)">All budgets</button>
+    <button class="starter-btn" data-budget="50" onclick="setBudgetPreset(50, this)">≤ €50</button>
+    <button class="starter-btn" data-budget="100" onclick="setBudgetPreset(100, this)">≤ €100</button>
+    <button class="starter-btn" data-budget="300" onclick="setBudgetPreset(300, this)">≤ €300</button>
+    <button class="starter-btn" onclick="showStarterSix(this)">Starter 6</button>
+    <button class="starter-btn" onclick="sendDigestToTelegram()">Send digest to Telegram</button>
   </div>
   <div class="hall-cta-row">
     <a href="#vault" class="hall-cta">Enter the Museum ↓</a>
@@ -2625,11 +2636,16 @@ let lbCards = [];
 let lbIndex = 0;
 let strictWaifuMode = true;
 let searchQuery = '';
+let budgetCap = 0;
+let starterSixMode = false;
 
 const SNAPSHOT_KEY = 'wm_waifu_snapshot_v2';
 const STRICT_MODE_KEY = 'wm_strict_waifu_mode';
 const BEGINNER_MODE_KEY = 'wm_beginner_mode';
 const ONBOARD_SEEN_KEY = 'wm_onboard_seen_v1';
+const BUDGET_KEY = 'wm_budget_cap';
+const STARTER_SIX_KEY = 'wm_starter_six_mode';
+const ANALYTICS_KEY = 'wm_lite_analytics';
 
 const collection = JSON.parse(localStorage.getItem('wm_collection') || '{}');
 const wantList = JSON.parse(localStorage.getItem('wm_wantlist') || '{}');
@@ -2666,9 +2682,87 @@ function setBeginnerMode(enabled) {
   closeOnboarding();
   showToast(on ? 'Beginner Mode enabled ✨' : 'Pro mode enabled ⚡');
 }
-window.openOnboarding = openOnboarding;
+window.openOnboarding = function() {
+  trackEvent('onboarding_open');
+  openOnboarding();
+};
 window.closeOnboarding = closeOnboarding;
-window.setBeginnerMode = setBeginnerMode;
+window.setBeginnerMode = function(enabled) {
+  trackEvent(enabled ? 'beginner_on' : 'beginner_off');
+  setBeginnerMode(enabled);
+};
+
+function trackEvent(event) {
+  try {
+    const now = Date.now();
+    const data = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '{}');
+    data[event] = (data[event] || 0) + 1;
+    data.lastEventAt = now;
+    localStorage.setItem(ANALYTICS_KEY, JSON.stringify(data));
+  } catch (_) {}
+  fetch(`https://api.countapi.xyz/hit/waifu-pulls/${event}`, { mode: 'no-cors' }).catch(() => {});
+}
+
+function getCardPriceValue(card) {
+  const priceEl = card.querySelector('.card-price, .ccard-price, .vault-price');
+  return parsePriceText((priceEl?.textContent || '').trim());
+}
+
+function setBudgetPreset(value, btn) {
+  budgetCap = Number(value) || 0;
+  localStorage.setItem(BUDGET_KEY, String(budgetCap));
+  document.querySelectorAll('.starter-btn[data-budget]').forEach(b => b.classList.toggle('active', Number(b.dataset.budget) === budgetCap));
+  starterSixMode = false;
+  localStorage.setItem(STARTER_SIX_KEY, '0');
+  document.querySelectorAll('.starter-btn').forEach(b => { if (!b.dataset.budget) b.classList.remove('active'); });
+  trackEvent(`budget_${budgetCap || 'all'}`);
+  applyFilters();
+  updateTrustRow();
+}
+window.setBudgetPreset = setBudgetPreset;
+
+const STARTER_SIX = [
+  'Marnie Full Art Secret Rare',
+  'Nessa Full Art Secret Rare',
+  'Dark Magician Girl Starlight Rare (MGED)',
+  'Ahri Showcase Card (Riftbound)',
+  'Momo Ayase Signed SP (Dandadan)',
+  'Yor Forger Signed SP'
+];
+function showStarterSix(btn) {
+  starterSixMode = !starterSixMode;
+  localStorage.setItem(STARTER_SIX_KEY, starterSixMode ? '1' : '0');
+  btn?.classList.toggle('active', starterSixMode);
+  trackEvent('starter_six_toggle');
+  applyFilters();
+  updateTrustRow();
+  if (starterSixMode) {
+    const first = document.querySelector('[data-card-name]');
+    first?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast('Starter 6 mode: focused beginner picks');
+  }
+}
+window.showStarterSix = showStarterSix;
+
+function sendDigestToTelegram() {
+  const cards = Array.from(document.querySelectorAll('[data-card-name]')).filter(card =>
+    cardVisibleByStrict(card) && cardMatchesSearch(card) &&
+    (activeTCG === 'all' || card.getAttribute('data-game') === activeTCG) &&
+    (!budgetCap || getCardPriceValue(card) <= budgetCap) &&
+    (!starterSixMode || STARTER_SIX.includes(card.getAttribute('data-card-name') || ''))
+  ).slice(0, 10);
+
+  const lines = cards.map(c => {
+    const n = c.getAttribute('data-card-name') || '';
+    const p = (c.querySelector('.card-price, .ccard-price, .vault-price')?.textContent || '').trim();
+    return `• ${n} (${p || 'n/a'})`;
+  });
+  const text = `Waifu Pulls Digest\nMode: ${strictWaifuMode ? 'Strict' : 'Relaxed'}\nFilter: ${activeTCG.toUpperCase()}${budgetCap ? ` · <= €${budgetCap}` : ''}${starterSixMode ? ' · Starter 6' : ''}\n\n${lines.join('\n') || 'No cards match current filters'}\n\n${location.href}`;
+  const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+  window.open(shareUrl, '_blank');
+  trackEvent('telegram_digest');
+}
+window.sendDigestToTelegram = sendDigestToTelegram;
 
 function parsePriceText(priceText) {
   if (!priceText) return 0;
@@ -2879,7 +2973,9 @@ function updateTrustRow(imageBrokenCount = null) {
   if (!row) return;
   const freshness = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   const imgPart = imageBrokenCount === null ? '✅ Image Audit Pending' : (imageBrokenCount === 0 ? '✅ Images Healthy' : `⚠️ ${imageBrokenCount} image issue(s)`);
-  row.textContent = `🔒 Strict Waifu Mode ${strictWaifuMode ? 'ON' : 'OFF'} · ${imgPart} · 🕒 Updated ${freshness}`;
+  const budgetPart = budgetCap ? `💸 ≤€${budgetCap}` : '💸 All budgets';
+  const starterPart = starterSixMode ? '🎯 Starter 6 ON' : '🎯 Starter 6 OFF';
+  row.textContent = `🔒 Strict ${strictWaifuMode ? 'ON' : 'OFF'} · ${imgPart} · ${budgetPart} · ${starterPart} · 🕒 ${freshness}`;
 }
 
 function buildCleanTierList() {
@@ -2920,14 +3016,16 @@ function buildCleanTierList() {
 
 let dreamLastCardName = null;
 window.openDreamPull = function() {
+  trackEvent('dream_open');
   document.getElementById('dream-overlay')?.classList.add('show');
 };
 window.closeDreamPull = function() {
   document.getElementById('dream-overlay')?.classList.remove('show');
 };
 window.runDreamPull = function() {
+  trackEvent('dream_pull');
   const candidates = Array.from(document.querySelectorAll('[data-card-name]')).filter(card =>
-    cardVisibleByStrict(card) && cardMatchesSearch(card) && (activeTCG === 'all' || card.getAttribute('data-game') === activeTCG)
+    cardVisibleByStrict(card) && cardMatchesSearch(card) && (activeTCG === 'all' || card.getAttribute('data-game') === activeTCG) && (!budgetCap || getCardPriceValue(card) <= budgetCap) && (!starterSixMode || STARTER_SIX.includes(card.getAttribute('data-card-name') || ''))
   );
   if (!candidates.length) return showToast('No cards match current filters');
 
@@ -3206,7 +3304,9 @@ function applyFilters() {
     const gameMatch = activeTCG === 'all' || game === activeTCG;
     const strictMatch = !isNamedCard || cardVisibleByStrict(card);
     const searchMatch = !isNamedCard || cardMatchesSearch(card);
-    card.style.display = (gameMatch && strictMatch && searchMatch) ? '' : 'none';
+    const budgetMatch = !isNamedCard || !budgetCap || getCardPriceValue(card) <= budgetCap;
+    const starterMatch = !isNamedCard || !starterSixMode || STARTER_SIX.includes(card.getAttribute('data-card-name') || '');
+    card.style.display = (gameMatch && strictMatch && searchMatch && budgetMatch && starterMatch) ? '' : 'none';
   });
   syncTierMiniVisibility();
   updateHeroCardCount();
@@ -3644,12 +3744,19 @@ function handleDeepLink() {
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', function() {
+  trackEvent('page_view');
   strictWaifuMode = localStorage.getItem(STRICT_MODE_KEY) !== '0';
+  budgetCap = Number(localStorage.getItem(BUDGET_KEY) || '0') || 0;
+  starterSixMode = localStorage.getItem(STARTER_SIX_KEY) === '1';
   const beginnerEnabled = localStorage.getItem(BEGINNER_MODE_KEY) === '1';
   document.body.classList.toggle('beginner-mode', beginnerEnabled);
   document.getElementById('beginner-strip')?.classList.toggle('show', beginnerEnabled);
+  document.querySelectorAll('.starter-btn[data-budget]').forEach(b => b.classList.toggle('active', Number(b.dataset.budget) === budgetCap));
+  document.querySelectorAll('.starter-btn').forEach(b => {
+    if (!b.dataset.budget && b.textContent.includes('Starter 6')) b.classList.toggle('active', starterSixMode);
+  });
   if (!localStorage.getItem(ONBOARD_SEEN_KEY)) {
-    setTimeout(() => openOnboarding(), 700);
+    setTimeout(() => window.openOnboarding(), 700);
   }
 
   const strictToggle = document.getElementById('strict-waifu-toggle');
