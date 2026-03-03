@@ -60,6 +60,43 @@
       border-bottom: 1px solid rgba(255,255,255,0.04);
       height: 60px; display: flex; align-items: center; padding: 0 32px;
     }
+
+    /* ─── ACCESS GATE ─── */
+    body.locked { overflow: hidden; }
+    body.locked > *:not(#access-gate) {
+      filter: blur(10px) saturate(0.7);
+      pointer-events: none;
+      user-select: none;
+    }
+    .access-gate {
+      position: fixed; inset: 0; z-index: 1400;
+      display: none; align-items: center; justify-content: center;
+      padding: 18px; background: rgba(6,7,12,0.86); backdrop-filter: blur(10px);
+    }
+    .access-gate.show { display: flex; }
+    .gate-card {
+      width: min(560px, 100%); border-radius: 16px;
+      border: 1px solid rgba(232,64,106,0.25);
+      background: linear-gradient(145deg, rgba(20,22,32,0.95), rgba(12,14,22,0.95));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      padding: 22px;
+    }
+    .gate-title { font-family: var(--display); font-size: 34px; margin-bottom: 8px; }
+    .gate-sub { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
+    .gate-row { display: flex; gap: 8px; }
+    .gate-input {
+      flex: 1; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
+      background: rgba(255,255,255,0.03); color: var(--text);
+      padding: 11px 12px; font-size: 14px;
+    }
+    .gate-btn {
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 10px;
+      background: rgba(255,255,255,0.04); color: var(--text);
+      padding: 11px 14px; font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    .gate-btn.primary { background: linear-gradient(135deg, var(--pink), var(--purple)); border-color: transparent; }
+    .gate-meta { margin-top: 10px; font-size: 12px; color: var(--muted); }
+    .gate-actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
     .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--pink), var(--purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
     .logo-text { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
@@ -864,12 +901,28 @@
       .hall-cta { padding: 16px 24px; min-height: 52px; }
       .onboard-grid { grid-template-columns: 1fr; }
       .onboard-modal h3 { font-size: 24px; }
+      .gate-row { flex-direction: column; }
     }
 
   </style>
 </head>
 <body>
 <canvas id="sakura-canvas"></canvas>
+<div class="access-gate" id="access-gate">
+<div class="gate-card">
+<div class="gate-title">Private Entry 🌸</div>
+<div class="gate-sub">Waifu Pulls is publicly hosted but privately gated. Enter your key to continue, or request access.</div>
+<div class="gate-row">
+<input autocomplete="off" class="gate-input" id="gate-input" placeholder="Enter access key" type="password"/>
+<button class="gate-btn primary" onclick="unlockWithKey()">Unlock</button>
+</div>
+<div class="gate-actions">
+<button class="gate-btn" onclick="requestAccess()">Request access</button>
+<button class="gate-btn" onclick="walletGateInfo()">NFT gate (idea)</button>
+</div>
+<div class="gate-meta" id="gate-meta">Tip: Ask Mikel for a private key. (Client-side gate = deterrent, not military-grade security.)</div>
+</div>
+</div>
 <!-- ═══ HEADER ═══ -->
 <header class="header">
 <a class="logo" href="#"><div class="logo-icon">🌸</div><div class="logo-text">Waifu Pulls</div></a>
@@ -2469,6 +2522,9 @@ const ONBOARD_SEEN_KEY = 'wm_onboard_seen_v1';
 const BUDGET_KEY = 'wm_budget_cap';
 const STARTER_SIX_KEY = 'wm_starter_six_mode';
 const ANALYTICS_KEY = 'wm_lite_analytics';
+const ACCESS_KEY_HASH = '94d27857c52e7d07975d84aa60a659786b0574003def1b04c2395ad862ac3d20'; // sha256(ECHO-VAULT-2026)
+const ACCESS_TOKEN_KEY = 'wm_access_token';
+const ACCESS_TOKEN_EXP = 'wm_access_token_exp';
 
 const collection = JSON.parse(localStorage.getItem('wm_collection') || '{}');
 const wantList = JSON.parse(localStorage.getItem('wm_wantlist') || '{}');
@@ -2487,6 +2543,51 @@ function todayKey() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+
+async function sha256Hex(text) {
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function hasValidAccessToken() {
+  const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const exp = Number(localStorage.getItem(ACCESS_TOKEN_EXP) || '0');
+  return token === 'ok' && Date.now() < exp;
+}
+
+function setLockedState(locked) {
+  document.body.classList.toggle('locked', !!locked);
+  document.getElementById('access-gate')?.classList.toggle('show', !!locked);
+}
+
+window.unlockWithKey = async function() {
+  const input = document.getElementById('gate-input');
+  const meta = document.getElementById('gate-meta');
+  const val = (input?.value || '').trim();
+  if (!val) return;
+  const h = await sha256Hex(val);
+  if (h === ACCESS_KEY_HASH) {
+    localStorage.setItem(ACCESS_TOKEN_KEY, 'ok');
+    localStorage.setItem(ACCESS_TOKEN_EXP, String(Date.now() + (1000 * 60 * 60 * 24 * 14))); // 14 days
+    setLockedState(false);
+    showToast('Access granted ✨');
+    if (input) input.value = '';
+  } else {
+    if (meta) meta.textContent = 'Invalid key. Ask Mikel for access or request an invite.';
+    showToast('Invalid key');
+  }
+};
+
+window.requestAccess = function() {
+  const subject = encodeURIComponent('Waifu Pulls access request');
+  const body = encodeURIComponent('Hi Mikel, I would like access to Waifu Pulls.\n\nName:\nReason:\nTelegram/Contact:');
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+};
+
+window.walletGateInfo = function() {
+  showToast('NFT wallet gate can be added via tokenproof / thirdweb / SIWE flow (next step).', 4200);
+};
 
 function showOnboardingOverlay() {
   document.getElementById('onboard-overlay')?.classList.add('show');
@@ -3565,6 +3666,16 @@ function handleDeepLink() {
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', function() {
   trackEvent('page_view');
+
+  const accessOk = hasValidAccessToken();
+  setLockedState(!accessOk);
+  const gateInput = document.getElementById('gate-input');
+  if (gateInput) {
+    gateInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') unlockWithKey();
+    });
+  }
+
   strictWaifuMode = localStorage.getItem(STRICT_MODE_KEY) !== '0';
   budgetCap = Number(localStorage.getItem(BUDGET_KEY) || '0') || 0;
   starterSixMode = localStorage.getItem(STARTER_SIX_KEY) === '1';
